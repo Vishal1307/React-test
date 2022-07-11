@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Button } from './component/Button';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [counter,setCounter]=useState(0)
+  const handleButton=(val)=>{
+    setCounter((prev)=>prev+val)
+  }
+  
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>counter:-{counter}</h1>
+      <Button data-testid="add" colorChange={"green"} variant={"ghost"} onClick={()=>handleButton(5)}>ADD</Button>
+      <Button  onClick={()=>handleButton(-5)}>REDUCE</Button>
+      
     </div>
   );
 }
